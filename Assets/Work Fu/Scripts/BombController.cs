@@ -25,6 +25,10 @@ public class BombController : MonoBehaviour
     public Tilemap descructibleTiles;
     public Descructible descructiblePrefab;
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip explosionSound;
+
     private void OnEnable()
     {
         bombRemaining = bombAmount;
@@ -48,6 +52,9 @@ public class BombController : MonoBehaviour
         bombRemaining--;
 
         yield return new WaitForSeconds(bombFuseTime);
+
+        // å¯â âπÇçƒê∂
+        audioSource.PlayOneShot(explosionSound);
 
         position = bomb.transform.position;
         position.x = Mathf.Round(position.x);

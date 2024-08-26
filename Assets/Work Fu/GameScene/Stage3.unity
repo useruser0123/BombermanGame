@@ -5422,6 +5422,22 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 1032357854575295673, guid: 36b80c403fe37a74098a9b23d4b025e0, type: 3}
+      propertyPath: inputUp
+      value: 273
+      objectReference: {fileID: 0}
+    - target: {fileID: 1032357854575295673, guid: 36b80c403fe37a74098a9b23d4b025e0, type: 3}
+      propertyPath: inputDown
+      value: 274
+      objectReference: {fileID: 0}
+    - target: {fileID: 1032357854575295673, guid: 36b80c403fe37a74098a9b23d4b025e0, type: 3}
+      propertyPath: inputLeft
+      value: 276
+      objectReference: {fileID: 0}
+    - target: {fileID: 1032357854575295673, guid: 36b80c403fe37a74098a9b23d4b025e0, type: 3}
+      propertyPath: inputRight
+      value: 275
+      objectReference: {fileID: 0}
+    - target: {fileID: 1032357854575295673, guid: 36b80c403fe37a74098a9b23d4b025e0, type: 3}
       propertyPath: gameOverText
       value: 
       objectReference: {fileID: 963726763}

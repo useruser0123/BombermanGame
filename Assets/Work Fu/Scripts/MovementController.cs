@@ -4,12 +4,14 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class MovementController : MonoBehaviour
 {
     public new Rigidbody2D rigidbody { get; private set; }
     private Vector2 direction = Vector2.down;
     public float speed = 5f;
+    public int playerNumber;
 
     public KeyCode inputUp = KeyCode.W;
     public KeyCode inputDown = KeyCode.S;
@@ -33,19 +35,23 @@ public class MovementController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(inputUp))
+        var inputX = Input.GetAxisRaw($"Horizontal_P{playerNumber}");
+        var inputY = Input.GetAxisRaw($"Vertical_P{playerNumber}");
+
+
+        if (inputY > 0)
         {
             SetDirection(Vector2.up, spriteRendererUp);
         }
-        else if (Input.GetKey(inputDown))
+        else if (inputY < 0)
         {
             SetDirection(Vector2.down, spriteRendererDown);
         }
-        else if (Input.GetKey(inputLeft))
+        else if (inputX < 0)
         {
             SetDirection(Vector2.left, spriteRendererLeft);
         }
-        else if (Input.GetKey(inputRight))
+        else if (inputX > 0)
         {
             SetDirection(Vector2.right, spriteRendererRight);
         }

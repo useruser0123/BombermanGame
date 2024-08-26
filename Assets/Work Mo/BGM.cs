@@ -41,13 +41,13 @@ public class BGM : MonoBehaviour
     {
         switch (sceneName)
         {
-            case "Stage_1-1":
+            case "Stage1":
                 audioSource.clip = bgmStage1;
                 break;
-            case "Stage1-2":
+            case "Stage2":
                 audioSource.clip = bgmStage2;
                 break;
-            case "Stage1-3":
+            case "Stage3":
                 audioSource.clip = bgmStage3;
                 break;
             default:

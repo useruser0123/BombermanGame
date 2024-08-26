@@ -14,6 +14,7 @@ public class BombController : MonoBehaviour
     public float bombFuseTime = 3f;
     public int bombAmount = 1;
     private int bombRemaining;
+    public int playerNumber;
 
     [Header("Explosion")]
     public Explosion explosionPrefab;
@@ -36,7 +37,7 @@ public class BombController : MonoBehaviour
 
     private void Update()
     {
-        if (bombRemaining > 0 && Input.GetKeyDown(inputkey))
+        if (bombRemaining > 0 && Input.GetButtonDown($"Fire1_P{playerNumber}"))
         {
             StartCoroutine(PlaceBomb());    
         }

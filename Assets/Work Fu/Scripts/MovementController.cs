@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MovementController : MonoBehaviour
 {
@@ -19,6 +22,9 @@ public class MovementController : MonoBehaviour
     public AnimatedSpriteRenderer spriteRendererRight;
     public AnimatedSpriteRenderer spriteRendererDeath;
     private AnimatedSpriteRenderer activSpriteRenderer;
+
+    public TMP_Text gameOverText; // TextMeshPro用のTMP_Text
+    public float restartDelay = 2f; // リスタートするまでの遅延時間
 
     private void Awake()
     {
@@ -89,11 +95,19 @@ public class MovementController : MonoBehaviour
         spriteRendererRight.enabled = false;
         spriteRendererDeath.enabled = true;
 
+        gameOverText.enabled = true; // ゲームオーバーのメッセージを表示
+
         Invoke(nameof(OnDeathSequenceEnded), 1.25f);
     }
 
     private void OnDeathSequenceEnded()
     {
         gameObject.SetActive(false);
+        Invoke(nameof(RestartStage), restartDelay); // 遅延後にステージを再スタート
+    }
+
+    private void RestartStage()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // 現在のステージを再ロード
     }
 }

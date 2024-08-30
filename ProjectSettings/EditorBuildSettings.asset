@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Work Fu/GameScene/Stage4.unity
     guid: 18720d9410a8ede4895bd119911b94fb
+  - enabled: 1
+    path: Assets/ClearScene.unity
+    guid: ec26cfcfc3840ec468f345c0e136dab3
   m_configObjects: {}

@@ -6,11 +6,12 @@ public class VerticalEnemyController : MonoBehaviour
     public float moveDistance = 3f; // 移動する距離
     private bool movingUp = true; // 移動方向のフラグ
     private Vector2 initialPosition; // 初期位置
-
+    private StageManager stageManager;
     void Start()
     {
         // 初期位置を保存
         initialPosition = transform.position;
+        stageManager = GameObject.FindObjectOfType<StageManager>();
     }
 
     void Update()
@@ -57,6 +58,7 @@ public class VerticalEnemyController : MonoBehaviour
         // 衝突したオブジェクトがExplosionレイヤーに属しているか確認
         if (collision.gameObject.layer == LayerMask.NameToLayer("Explosion"))
         {
+            stageManager.OnEnemyDefeated();
             // 敵オブジェクトを削除
             Destroy(gameObject);
         }

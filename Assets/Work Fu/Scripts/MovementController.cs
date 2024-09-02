@@ -12,6 +12,7 @@ public class MovementController : MonoBehaviour
     private Vector2 direction = Vector2.down;
     public float speed = 5f;
     public int playerNumber;
+    [SerializeField] private PlayerManager playerManager;
 
     public KeyCode inputUp = KeyCode.W;
     public KeyCode inputDown = KeyCode.S;
@@ -25,12 +26,12 @@ public class MovementController : MonoBehaviour
     public AnimatedSpriteRenderer spriteRendererDeath;
     private AnimatedSpriteRenderer activSpriteRenderer;
 
-    public TMP_Text gameOverText; // TextMeshPro用のTMP_Text
     public float restartDelay = 2f; // リスタートするまでの遅延時間
 
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody2D>();
+        playerManager.PlayerNum++;
     }
 
     private void Update()
@@ -101,7 +102,7 @@ public class MovementController : MonoBehaviour
         spriteRendererRight.enabled = false;
         spriteRendererDeath.enabled = true;
 
-        gameOverText.enabled = true; // ゲームオーバーのメッセージを表示
+
 
         Invoke(nameof(OnDeathSequenceEnded), 1.25f);
     }
@@ -109,11 +110,6 @@ public class MovementController : MonoBehaviour
     private void OnDeathSequenceEnded()
     {
         gameObject.SetActive(false);
-        Invoke(nameof(RestartStage), restartDelay); // 遅延後にステージを再スタート
-    }
-
-    private void RestartStage()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // 現在のステージを再ロード
+        playerManager.DeadPlayer();
     }
 }

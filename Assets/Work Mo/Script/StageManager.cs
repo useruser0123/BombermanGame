@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum Estage { Stage1, Stage2, Stage3 }
 public class StageManager : MonoBehaviour
 {
     private int enemyCount;
+    public Estage stage;
 
     private void Start()
     {
@@ -26,6 +28,12 @@ public class StageManager : MonoBehaviour
     // クリアシーンに移動するメソッド
     private void LoadClearScene()
     {
-        SceneManager.LoadScene("ClearScene"); // "ClearScene"はクリア画面のシーン名
+        switch (stage)
+        {
+            case Estage.Stage3:
+                SceneManager.LoadScene("ClearScene"); // "ClearScene"はクリア画面のシーン名
+                break;
+        }
+
     }
 }
